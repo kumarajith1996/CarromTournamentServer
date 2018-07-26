@@ -1,0 +1,38 @@
+2018-07-23 10:03:42 Error: [PDOException] SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'boards' already exists in C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php on line 165
+Stack Trace:
+#0 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\PdoAdapter.php(165): PDO->exec('CREATE TABLE `b...')
+#1 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\MysqlAdapter.php(298): Phinx\Db\Adapter\PdoAdapter->execute('CREATE TABLE `b...')
+#2 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(349): Phinx\Db\Adapter\MysqlAdapter->createTable(Object(Phinx\Db\Table\Table), Array, Array)
+#3 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\TimedOutputAdapter.php(138): Phinx\Db\Adapter\AdapterWrapper->createTable(Object(Phinx\Db\Table\Table), Array, Array)
+#4 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Adapter\AdapterWrapper.php(349): Phinx\Db\Adapter\TimedOutputAdapter->createTable(Object(Phinx\Db\Table\Table), Array, Array)
+#5 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Plan\Plan.php(136): Phinx\Db\Adapter\AdapterWrapper->createTable(Object(Phinx\Db\Table\Table), Array, Array)
+#6 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(661): Phinx\Db\Plan\Plan->execute(Object(Migrations\CakeAdapter))
+#7 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Db\Table.php(555): Phinx\Db\Table->executeActions(false)
+#8 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\migrations\src\Table.php(91): Phinx\Db\Table->create()
+#9 C:\xampp3\htdocs\CarromTournamentServer\config\Migrations\20180723094654_Initial.php(45): Migrations\Table->create()
+#10 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Migration\Manager\Environment.php(128): Initial->up()
+#11 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(387): Phinx\Migration\Manager\Environment->executeMigration(Object(Initial), 'up', false)
+#12 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Migration\Manager.php(361): Phinx\Migration\Manager->executeMigration('default', Object(Initial), 'up', false)
+#13 C:\xampp3\htdocs\CarromTournamentServer\vendor\robmorgan\phinx\src\Phinx\Console\Command\Migrate.php(121): Phinx\Migration\Manager->migrate('default', '20180723094654', false)
+#14 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\migrations\src\Command\CommandTrait.php(35): Phinx\Console\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\migrations\src\Command\Migrate.php(67): Migrations\Command\Migrate->parentExecute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 C:\xampp3\htdocs\CarromTournamentServer\vendor\symfony\console\Command\Command.php(251): Migrations\Command\Migrate->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 C:\xampp3\htdocs\CarromTournamentServer\vendor\symfony\console\Application.php(886): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 C:\xampp3\htdocs\CarromTournamentServer\vendor\symfony\console\Application.php(262): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Migrate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 C:\xampp3\htdocs\CarromTournamentServer\vendor\symfony\console\Application.php(145): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#21 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\cakephp\src\Console\Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'migrate')
+#22 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\migrations\src\Shell\MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#23 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\cakephp\src\Console\CommandRunner.php(342): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#24 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\cakephp\src\Console\CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#25 C:\xampp3\htdocs\CarromTournamentServer\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#26 {main}
+
+
+2018-07-24 06:40:02 Error: [RuntimeException] Unknown command `cake seed`. Run `cake --help` to get the list of valid commands. in C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\cakephp\src\Console\CommandRunner.php on line 321
+Stack Trace:
+#0 C:\xampp3\htdocs\CarromTournamentServer\vendor\cakephp\cakephp\src\Console\CommandRunner.php(159): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'seed')
+#1 C:\xampp3\htdocs\CarromTournamentServer\bin\cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
