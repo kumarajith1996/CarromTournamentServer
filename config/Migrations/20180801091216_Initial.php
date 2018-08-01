@@ -177,11 +177,6 @@ class Initial extends AbstractMigration
                 'limit' => 100,
                 'null' => false,
             ])
-            ->addColumn('players', 'json', [
-                'default' => null,
-                'limit' => null,
-                'null' => true,
-            ])
             ->addColumn('bid_points', 'integer', [
                 'default' => '100',
                 'limit' => 11,
@@ -215,6 +210,29 @@ class Initial extends AbstractMigration
             ->addIndex(
                 [
                     'tournament_id',
+                ]
+            )
+            ->create();
+
+        $this->table('teams_users')
+            ->addColumn('team_id', 'integer', [
+                'default' => null,
+                'limit' => 11,
+                'null' => true,
+            ])
+            ->addColumn('user_id', 'integer', [
+                'default' => null,
+                'limit' => 11,
+                'null' => true,
+            ])
+            ->addIndex(
+                [
+                    'team_id',
+                ]
+            )
+            ->addIndex(
+                [
+                    'user_id',
                 ]
             )
             ->create();
@@ -261,11 +279,6 @@ class Initial extends AbstractMigration
             ->addColumn('team_id', 'integer', [
                 'default' => null,
                 'limit' => 11,
-                'null' => true,
-            ])
-            ->addColumn('past_team_ids', 'json', [
-                'default' => null,
-                'limit' => null,
                 'null' => true,
             ])
             ->addColumn('bid_value', 'integer', [
@@ -416,6 +429,27 @@ class Initial extends AbstractMigration
             )
             ->update();
 
+        $this->table('teams_users')
+            ->addForeignKey(
+                'team_id',
+                'teams',
+                'id',
+                [
+                    'update' => 'RESTRICT',
+                    'delete' => 'RESTRICT'
+                ]
+            )
+            ->addForeignKey(
+                'user_id',
+                'users',
+                'id',
+                [
+                    'update' => 'RESTRICT',
+                    'delete' => 'RESTRICT'
+                ]
+            )
+            ->update();
+
         $this->table('users')
             ->addForeignKey(
                 'level_id',
@@ -481,6 +515,14 @@ class Initial extends AbstractMigration
                 'tournament_id'
             )->save();
 
+        $this->table('teams_users')
+            ->dropForeignKey(
+                'team_id'
+            )
+            ->dropForeignKey(
+                'user_id'
+            )->save();
+
         $this->table('users')
             ->dropForeignKey(
                 'level_id'
@@ -495,6 +537,7 @@ class Initial extends AbstractMigration
         $this->table('matches')->drop()->save();
         $this->table('stages')->drop()->save();
         $this->table('teams')->drop()->save();
+        $this->table('teams_users')->drop()->save();
         $this->table('tournaments')->drop()->save();
         $this->table('users')->drop()->save();
     }
