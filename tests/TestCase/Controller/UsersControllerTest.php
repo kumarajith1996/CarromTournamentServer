@@ -20,6 +20,7 @@ class UsersControllerTest extends IntegrationTestCase
         'app.teams',
         'app.levels',
         'app.boards',
+        'app.teams_users',
         'app.boards_users'
     ];
 

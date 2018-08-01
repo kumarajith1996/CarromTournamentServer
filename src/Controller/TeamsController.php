@@ -62,7 +62,8 @@ class TeamsController extends AppController
             $this->Flash->error(__('The team could not be saved. Please, try again.'));
         }
         $tournaments = $this->Teams->Tournaments->find('list', ['limit' => 200]);
-        $this->set(compact('team', 'tournaments'));
+        $users = $this->Teams->Users->find('list', ['limit' => 200]);
+        $this->set(compact('team', 'tournaments', 'users'));
     }
 
     /**
@@ -75,7 +76,7 @@ class TeamsController extends AppController
     public function edit($id = null)
     {
         $team = $this->Teams->get($id, [
-            'contain' => []
+            'contain' => ['Users']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $team = $this->Teams->patchEntity($team, $this->request->getData());
@@ -87,7 +88,8 @@ class TeamsController extends AppController
             $this->Flash->error(__('The team could not be saved. Please, try again.'));
         }
         $tournaments = $this->Teams->Tournaments->find('list', ['limit' => 200]);
-        $this->set(compact('team', 'tournaments'));
+        $users = $this->Teams->Users->find('list', ['limit' => 200]);
+        $this->set(compact('team', 'tournaments', 'users'));
     }
 
     /**

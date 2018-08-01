@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\TeamsTable|\Cake\ORM\Association\BelongsTo $Teams
  * @property \App\Model\Table\LevelsTable|\Cake\ORM\Association\BelongsTo $Levels
  * @property \App\Model\Table\BoardsTable|\Cake\ORM\Association\BelongsToMany $Boards
+ * @property \App\Model\Table\TeamsTable|\Cake\ORM\Association\BelongsToMany $Teams
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -50,6 +51,11 @@ class UsersTable extends Table
             'targetForeignKey' => 'board_id',
             'joinTable' => 'boards_users'
         ]);
+        $this->belongsToMany('Teams', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'team_id',
+            'joinTable' => 'teams_users'
+        ]);
     }
 
     /**
@@ -86,9 +92,6 @@ class UsersTable extends Table
             ->integer('base_points')
             ->requirePresence('base_points', 'create')
             ->notEmpty('base_points');
-
-        $validator
-            ->allowEmpty('past_team_ids');
 
         $validator
             ->integer('bid_value')

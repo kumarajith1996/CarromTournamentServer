@@ -4,24 +4,16 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * User Entity
+ * TeamsUser Entity
  *
  * @property int $id
- * @property string $name
- * @property string $image_url
- * @property string $role
- * @property int $base_points
  * @property int $team_id
- * @property int $bid_value
- * @property bool $status
- * @property int $level_id
- * @property bool $isPlayer
+ * @property int $user_id
  *
  * @property \App\Model\Entity\Team $team
- * @property \App\Model\Entity\Level $level
- * @property \App\Model\Entity\Board[] $boards
+ * @property \App\Model\Entity\User $user
  */
-class User extends Entity
+class TeamsUser extends Entity
 {
 
     /**
@@ -34,17 +26,9 @@ class User extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'image_url' => true,
-        'role' => true,
-        'base_points' => true,
         'team_id' => true,
-        'bid_value' => true,
-        'status' => true,
-        'level_id' => true,
-        'isPlayer' => true,
+        'user_id' => true,
         'team' => true,
-        'level' => true,
-        'boards' => true
+        'user' => true
     ];
 }

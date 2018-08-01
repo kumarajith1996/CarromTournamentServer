@@ -9,7 +9,6 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $tournament_id
  * @property string $name
- * @property array $players
  * @property int $bid_points
  * @property int $played
  * @property int $won
@@ -35,7 +34,6 @@ class Team extends Entity
     protected $_accessible = [
         'tournament_id' => true,
         'name' => true,
-        'players' => true,
         'bid_points' => true,
         'played' => true,
         'won' => true,

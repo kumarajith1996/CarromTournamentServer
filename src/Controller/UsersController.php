@@ -21,7 +21,7 @@ class UsersController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Teams', 'Levels']
+            'contain' => ['Levels']
         ];
         $users = $this->paginate($this->Users);
 
@@ -38,7 +38,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Teams', 'Levels', 'Boards']
+            'contain' => ['Levels', 'Teams', 'Boards']
         ]);
 
         $this->set('user', $user);
@@ -61,10 +61,10 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $teams = $this->Users->Teams->find('list', ['limit' => 200]);
         $levels = $this->Users->Levels->find('list', ['limit' => 200]);
+        $teams = $this->Users->Teams->find('list', ['limit' => 200]);
         $boards = $this->Users->Boards->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'teams', 'levels', 'boards'));
+        $this->set(compact('user', 'levels', 'teams', 'boards'));
     }
 
     /**
@@ -77,7 +77,7 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Boards']
+            'contain' => ['Teams', 'Boards']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -88,10 +88,10 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $teams = $this->Users->Teams->find('list', ['limit' => 200]);
         $levels = $this->Users->Levels->find('list', ['limit' => 200]);
+        $teams = $this->Users->Teams->find('list', ['limit' => 200]);
         $boards = $this->Users->Boards->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'teams', 'levels', 'boards'));
+        $this->set(compact('user', 'levels', 'teams', 'boards'));
     }
 
     /**
