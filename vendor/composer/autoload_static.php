@@ -58,7 +58,6 @@ class ComposerStaticInitc3ee5577f8d7bd51c4715f4b92f3aad4
             'Symfony\\Component\\Config\\' => 25,
             'Seld\\PharUtils\\' => 15,
             'Seld\\JsonLint\\' => 14,
-            'Seld\\CliPrompt\\' => 15,
         ),
         'P' => 
         array (
@@ -85,6 +84,7 @@ class ComposerStaticInitc3ee5577f8d7bd51c4715f4b92f3aad4
         ),
         'C' => 
         array (
+            'Composer\\XdebugHandler\\' => 23,
             'Composer\\Spdx\\' => 14,
             'Composer\\Semver\\' => 16,
             'Composer\\CaBundle\\' => 18,
@@ -173,10 +173,6 @@ class ComposerStaticInitc3ee5577f8d7bd51c4715f4b92f3aad4
         array (
             0 => __DIR__ . '/..' . '/seld/jsonlint/src/Seld/JsonLint',
         ),
-        'Seld\\CliPrompt\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/seld/cli-prompt/src',
-        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
@@ -220,6 +216,10 @@ class ComposerStaticInitc3ee5577f8d7bd51c4715f4b92f3aad4
         'DebugKit\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/debug_kit/src',
+        ),
+        'Composer\\XdebugHandler\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/xdebug-handler/src',
         ),
         'Composer\\Spdx\\' => 
         array (

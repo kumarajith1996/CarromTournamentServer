@@ -308,7 +308,7 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
      */
     protected function _setConfig($config)
     {
-        if (!empty($config['url']) && $config['url'][0] === '/') {
+        if (strlen($config['url']) > 1 && $config['url'][0] === '/') {
             $config['url'] = substr($config['url'], 1);
         }
 
@@ -2446,5 +2446,5 @@ class ServerRequest implements ArrayAccess, ServerRequestInterface
     }
 }
 
-// @deprecated Add backwards compat alias.
+// @deprecated 3.4.0 Add backwards compat alias.
 class_alias('Cake\Http\ServerRequest', 'Cake\Network\Request');

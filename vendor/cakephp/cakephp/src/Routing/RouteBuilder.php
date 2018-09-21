@@ -388,7 +388,7 @@ class RouteBuilder
      */
     public function resources($name, $options = [], $callback = null)
     {
-        if (is_callable($options) && $callback === null) {
+        if (is_callable($options)) {
             $callback = $options;
             $options = [];
         }
@@ -982,7 +982,7 @@ class RouteBuilder
      */
     public function scope($path, $params, $callback = null)
     {
-        if ($callback === null) {
+        if (is_callable($params)) {
             $callback = $params;
             $params = [];
         }
@@ -1062,7 +1062,7 @@ class RouteBuilder
                 throw new RuntimeException($message);
             }
         }
-        $this->middleware = array_merge($this->middleware, $names);
+        $this->middleware = array_unique(array_merge($this->middleware, $names));
 
         return $this;
     }
