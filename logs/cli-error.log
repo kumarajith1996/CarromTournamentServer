@@ -78,3 +78,47 @@ Stack Trace:
 #15 {main}
 
 
+2018-09-24 09:24:59 Error: [Symfony\Component\Console\Exception\RuntimeException] Too many arguments, expected arguments "command". in /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Input/ArgvInput.php on line 182
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Input/ArgvInput.php(86): Symfony\Component\Console\Input\ArgvInput->parseArgument('20180801091216_...')
+#1 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Input/Input.php(55): Symfony\Component\Console\Input\ArgvInput->parse()
+#2 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Command/Command.php(210): Symfony\Component\Console\Input\Input->bind(Object(Symfony\Component\Console\Input\InputDefinition))
+#3 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Application.php(886): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#4 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Application.php(262): Symfony\Component\Console\Application->doRunCommand(Object(Migrations\Command\Migrate), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#5 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Application.php(145): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#6 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#7 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'migrate', '20180801091216_...')
+#8 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#9 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#10 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#11 /Applications/MAMP/htdocs/CarromTournamentServer/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#12 {main}
+
+
+2018-09-24 09:30:24 Error: [Symfony\Component\Console\Exception\CommandNotFoundException] Command "diff" is not defined. in /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Application.php on line 632
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Application.php(226): Symfony\Component\Console\Application->find('diff')
+#1 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/symfony/console/Application.php(145): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#2 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(108): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/Shell.php(532): Migrations\Shell\MigrationsShell->main('migrations', 'diff', 'AddedBiddingsTa...')
+#4 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/migrations/src/Shell/MigrationsShell.php(164): Cake\Console\Shell->runCommand(Array, true, Array)
+#5 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php(342): Migrations\Shell\MigrationsShell->runCommand(Array, true)
+#6 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php(164): Cake\Console\CommandRunner->runShell(Object(Migrations\Shell\MigrationsShell), Array)
+#7 /Applications/MAMP/htdocs/CarromTournamentServer/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#8 {main}
+
+
+2018-09-24 09:30:47 Error: [RuntimeException] Unknown command `cake migrations_diff`. Run `cake --help` to get the list of valid commands. in /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 321
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php(159): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'migrations_diff')
+#1 /Applications/MAMP/htdocs/CarromTournamentServer/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
+2018-09-24 09:30:56 Error: [RuntimeException] Unknown command `cake migration_diff`. Run `cake --help` to get the list of valid commands. in /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php on line 321
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CarromTournamentServer/vendor/cakephp/cakephp/src/Console/CommandRunner.php(159): Cake\Console\CommandRunner->resolveName(Object(Cake\Console\CommandCollection), Object(Cake\Console\ConsoleIo), 'migration_diff')
+#1 /Applications/MAMP/htdocs/CarromTournamentServer/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#2 {main}
+
+
