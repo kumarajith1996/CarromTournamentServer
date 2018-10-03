@@ -38,10 +38,9 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
-        $user = $this->Users->get($id, [
-            'contain' => ['Levels', 'Teams', 'Boards']
-        ]);
+        $user = $this->Users->get($id);
 
+        $this->set('_serialize', true);
         $this->set('user', $user);
     }
 
