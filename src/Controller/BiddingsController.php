@@ -46,18 +46,16 @@ class BiddingsController extends AppController
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
-    {
+    {;
         $bidding = $this->Biddings->newEntity();
         if ($this->request->is('post')) {
             $bidding = $this->Biddings->patchEntity($bidding, $this->request->getData());
             if ($this->Biddings->save($bidding)) {
-                $this->Flash->success(__('The bidding has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+                \Cake\Log\Log::debug("Saved Bidding");
             }
-            $this->Flash->error(__('The bidding could not be saved. Please, try again.'));
         }
-        $this->set(compact('bidding'));
+         $this->set(compact('bidding'));
+         $this->set('_serialize', true);
     }
 
     /**

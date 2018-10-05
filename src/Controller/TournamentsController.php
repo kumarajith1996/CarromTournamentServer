@@ -23,6 +23,7 @@ class TournamentsController extends AppController
         $tournaments = $this->paginate($this->Tournaments);
 
         $this->set(compact('tournaments'));
+        $this->ser('_serialize', true);
     }
 
     /**

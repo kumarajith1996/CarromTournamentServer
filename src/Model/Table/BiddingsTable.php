@@ -67,16 +67,6 @@ class BiddingsTable extends Table
         $validator
             ->allowEmpty('bids');
 
-        $validator
-            ->integer('type')
-            ->requirePresence('type', 'create')
-            ->notEmpty('type');
-
-        $validator
-            ->boolean('isBidClosed')
-            ->requirePresence('isBidClosed', 'create')
-            ->notEmpty('isBidClosed');
-
         return $validator;
     }
 

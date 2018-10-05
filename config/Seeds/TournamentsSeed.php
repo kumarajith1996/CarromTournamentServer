@@ -22,14 +22,14 @@ class TournamentsSeed extends AbstractSeed
             [
                 'id' => '1',
                 'name' => 'Blaze1',
-                'start_date' => '',
-                'end_date' => '',
+                'start_date' =>  null,
+                'end_date' =>  null,
             ],
             [
                 'id' => '2',
                 'name' => 'Blaze2',
-                'start_date' => '',
-                'end_date' => '',
+                'start_date' => null,
+                'end_date' => null,
             ],
         ];
 
