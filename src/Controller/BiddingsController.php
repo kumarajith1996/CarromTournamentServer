@@ -43,10 +43,10 @@ class BiddingsController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null adds a record to the biddings table
      */
-    public function add()
-    {;
+    public function openBid()
+    {
         $bidding = $this->Biddings->newEntity();
         if ($this->request->is('post')) {
             $bidding = $this->Biddings->patchEntity($bidding, $this->request->getData());
@@ -56,6 +56,19 @@ class BiddingsController extends AppController
         }
          $this->set(compact('bidding'));
          $this->set('_serialize', true);
+    }
+
+    public function closeBid()
+    {
+        $bidding = $this->Biddings->closeBid($this->request->getData());
+        $this->set(compact('bidding'));
+        $this->set('_serialize', true);
+    }
+
+    public function getBidPlayer()
+    {
+        $this->set('bids',$this->Biddings->getBidPlayer($this->request->getData()));
+        $this->set('_serialize', true);
     }
 
     /**

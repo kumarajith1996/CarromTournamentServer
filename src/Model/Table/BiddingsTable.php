@@ -5,7 +5,8 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\ORM\TableRegistry;
+use Cake\I18n\FrozenTime;
 /**
  * Biddings Model
  *
@@ -25,7 +26,6 @@ use Cake\Validation\Validator;
  */
 class BiddingsTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -84,4 +84,77 @@ class BiddingsTable extends Table
 
         return $rules;
     }
+
+    public function closeBid($requestData)
+    {
+        $bid = $this->get($requestData['id']);
+        $bid->isBidClosed = true;
+        $this->save($bid);
+        $bid->bids = $this->getLargestBid($requestData['id']);
+        //TODO: Assign player to team or go to secret bid
+        return $bid;
+   }
+
+   public function getBidPlayer($requestData)
+   {
+        $result = [];
+        $bids = $this->find()
+            ->where(['id >=' =>  $requestData['id'] ?? 1])
+            ->hydrate(false)
+            ->toArray();
+        
+        //If required record is only the current record, wait for timestamp change or new records
+        if(isset($requestData['modified']) && count($bids) == 1)
+        {
+            while(true)
+            {
+                $latestRecord = $this->find()->order(['id' => 'DESC'])->first();
+                if($latestRecord->id == $requestData['id'])
+                {
+                    if($latestRecord->modified == new FrozenTime($requestData['modified']))
+                    {  
+                        sleep(1);
+                    }
+                    else
+                    {
+                        \Cake\Log\Log::debug($latestRecord);
+                        $result[] = $latestRecord->toArray();
+                        break;
+                    }
+                }
+                else
+                {
+                    $result = $this->find()
+                        ->where(['id >=' =>  $requestData['id']])
+                        ->hydrate(false)
+                        ->toArray();
+                    break;
+                }
+            }
+        }
+        else
+        {
+            $result = $bids;
+        }
+        foreach ($result as &$bid) {
+            $bid['bids'] = $this->getLargestBid($bid['id']);
+        }
+        return $result;
+   }
+
+   private function getLargestBid($id)
+   {
+        $maxBidValue = 0;
+        $teamIds = [];
+        $bids = $this->get($id)->bids;
+        if($bids != null)
+        {
+            $maxBidValue = max($bids);
+            $teamIds = array_keys($bids, $maxBidValue);
+        }
+        $largestBid = [];
+        $largestBid['max_bid'] = $maxBidValue;
+        $largestBid['teamIds'] = $teamIds;
+        return $largestBid;
+   }
 }
